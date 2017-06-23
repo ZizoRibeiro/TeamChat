@@ -13,7 +13,7 @@ RSpec.describe ChannelsController, type: :controller do
 
   describe 'POST #create' do
 
-    render_viewd # to render the json
+    render_views # to render the json
 
     context 'User is a Team Member' do
       before(:each) do
@@ -33,9 +33,17 @@ RSpec.describe ChannelsController, type: :controller do
         expect(Channel.last.user).to eql(@current_user)
         expect(Channel.last.team).to eql(@team)
       end
+
+      it 'Return right values to channel' do
+        response_hash = JSON.parse(response.body)
+
+        expect(response_hash["user_id"]).to eq(@current_user.id)
+        expect(response_hash["slug"]).to eq(@channel_attributes[:slug])
+        expect(response_hash["team_id"]).to eq(@team.id)
+      end
     end
 
-    context 'User isnt Team member' do
+    context 'User isnt a Team member' do
       before(:each) do
         @team = create(:team)
         @channel_attributes = attributes_for(:channel, team: @team)
