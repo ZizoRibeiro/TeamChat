@@ -14,7 +14,7 @@ class Ability
       end
 
       can [:destroy, :update], Channel do |c|
-        c.team_one_id == user.id || t.user_two_id == user.id
+        c.team.user_id == user.id || c.user_id == user.id
       end
 
       can [:read], Talk do |t|

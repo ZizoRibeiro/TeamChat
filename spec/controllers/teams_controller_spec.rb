@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe TeamsControler, type: :controller do
+RSpec.describe TeamsController, type: :controller do
   include Devise::Test::ControllerHelpers
 
   before(:each) do
@@ -61,7 +61,7 @@ RSpec.describe TeamsControler, type: :controller do
   describe 'POST #create' do
     before(:each) do
       @team_attributes = attributes_for(:team, user: @current_user)
-      post :create, params: (team: @team_attributes)
+      post :create, params: {team: @team_attributes}
     end
 
     it 'Redirect to a new team' do
