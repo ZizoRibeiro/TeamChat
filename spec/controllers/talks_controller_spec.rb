@@ -15,7 +15,7 @@ RSpec.describe TalksController, type: :controller do
     # To render Json
     render_views
 
-    context "Is talk member" do
+    context "USER is a member of the TALK" do
       before(:each) do
         @team = create(:team)
         @guest_user = create(:user)
@@ -55,7 +55,7 @@ RSpec.describe TalksController, type: :controller do
       end
     end
 
-    context "Isn't talk member" do
+    context "USER isn't a member of the TALK" do
       before(:each) do
         @team = create(:team)
         @guest_user = create(:user)

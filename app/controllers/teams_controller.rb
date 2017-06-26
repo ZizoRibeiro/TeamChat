@@ -35,7 +35,7 @@ class TeamsController < ApplicationController
   private
 
   def set_by_slug_team
-    @team = team.find_by(slug: params[:slug])
+    @team = Team.find_by(slug: params[:slug])
   end
 
   def set_team
