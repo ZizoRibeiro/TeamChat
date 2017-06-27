@@ -20,7 +20,7 @@ class ChannelsController < ApplicationController
     @channel.destroy
 
     respond_to do |format|
-      format.json { head :no_content }
+      format.json { render json: true }
     end
   end
 
@@ -37,5 +37,5 @@ class ChannelsController < ApplicationController
   def channel_params
     params.require(:channel).permit(:slug, :team_id).merge(user: current_user)
   end
-  
+
 end
